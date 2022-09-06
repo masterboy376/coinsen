@@ -18,7 +18,7 @@ const Home = () => {
 
   async function createProposal(newProposal) {
     let options = {
-      contractAddress: "0xF304Ddf294d05c80995FB0702b40DfEA8E48582a",
+      contractAddress: "0x3b7dcEBA675C5238c8b8a8aBFd8491D36D2bB0B5",
       functionName: "createProposal",
       abi: [
         {
@@ -132,7 +132,7 @@ const Home = () => {
         const options = {
           address: "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
           token_id:
-            "34885103611559094078416375598166902696017567311370712658413208238551126245396",
+          "61256219218630090908623884353415804251487165430180099622403610134235190394881",
           chain: "mumbai",
         };
         const tokenIdOwners = await Web3Api.token.getTokenIdOwners(options);
@@ -182,9 +182,9 @@ const Home = () => {
                   columnsConfig="10% 70% 20%"
                   data={proposals}
                   header={[
-                    <span>ID</span>,
-                    <span>Description</span>,
-                    <span>Status</span>,
+                    <span style={{textAlign: "center", paddingTop: "14px", margin:"auto"}}>ID</span>,
+                    <span style={{textAlign: "center", paddingTop: "14px", margin:"auto"}}>Description</span>,
+                    <span style={{textAlign: "center", paddingTop: "14px", margin:"auto"}}>Status</span>,
                   ]}
                   pageSize={5}
                 />
@@ -219,8 +219,8 @@ const Home = () => {
             </div>
             )}
           </Tab>
-          <Tab tabKey={2} tabName="Forum"></Tab>
-          <Tab tabKey={3} tabName="Docs"></Tab>
+          {/* <Tab tabKey={2} tabName="Forum"></Tab>
+          <Tab tabKey={3} tabName="Docs"></Tab> */}
         </TabList>
       </div>
       <div className="voting"></div>

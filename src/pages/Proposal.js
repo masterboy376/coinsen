@@ -69,7 +69,7 @@ const Proposal = () => {
   async function castVote(upDown) {
     
     let options = {
-      contractAddress: "0xF304Ddf294d05c80995FB0702b40DfEA8E48582a",
+      contractAddress: "0x3b7dcEBA675C5238c8b8a8aBFd8491D36D2bB0B5",
       functionName: "voteOnProposal",
       abi: [
         {
@@ -159,19 +159,18 @@ const Proposal = () => {
           </Widget>
         </div>
         )}
-        <div className="votesDiv">
           <Table
-            style={{ width: "60%" }}
+            style={{ width: "100%" }}
             columnsConfig="90% 10%"
             data={votes}
-            header={[<span>Address</span>, <span>Vote</span>]}
+            header={[<span style={{ padding: "10px" }}>Address</span>, <span style={{ padding: "10px" }}>Vote</span>]}
             pageSize={5}
           />
-
           <Form
             isDisabled={proposalDetails.text !== "Ongoing"}
             style={{
-              width: "35%",
+              backgroundColor: "black",
+              minWidth: "100%",
               height: "250px",
               border: "1px solid rgba(6, 158, 252, 0.2)",
             }}
@@ -202,7 +201,6 @@ const Proposal = () => {
             }}
             title="Cast Vote"
           />
-        </div>
       </div>
       <div className="voting"></div>
     </>

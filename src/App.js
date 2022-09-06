@@ -10,7 +10,8 @@ const App = () => {
   return (
     <>
       <div className="header">
-        <img width="160px" src={moralisLogo} alt="logo" />
+        {/* <img width="160px" src={moralisLogo} alt="logo" /> */}
+        <span style={{fontSize: "25px", fontWeight: "bold" , color:"white"}}>DAO</span>
         <ConnectButton />
       </div>
       <Routes>
