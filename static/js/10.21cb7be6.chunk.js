@@ -1,2 +1,0 @@
-(this["webpackJsonptwitter-clone"]=this["webpackJsonptwitter-clone"]||[]).push([[10],{1285:function(n,t){},1286:function(n,t){},1339:function(n,t){},1343:function(n,t){},1345:function(n,t){},1347:function(n,t){}}]);
-//# sourceMappingURL=10.21cb7be6.chunk.js.map
