@@ -9,8 +9,8 @@
     "static/js/3.a2965ca2.chunk.js": "/dao/static/js/3.a2965ca2.chunk.js",
     "static/js/3.a2965ca2.chunk.js.map": "/dao/static/js/3.a2965ca2.chunk.js.map",
     "main.css": "/dao/static/css/main.e91c6d40.chunk.css",
-    "main.js": "/dao/static/js/main.11602253.chunk.js",
-    "main.js.map": "/dao/static/js/main.11602253.chunk.js.map",
+    "main.js": "/dao/static/js/main.6af40e1c.chunk.js",
+    "main.js.map": "/dao/static/js/main.6af40e1c.chunk.js.map",
     "runtime-main.js": "/dao/static/js/runtime-main.3a867b1d.js",
     "runtime-main.js.map": "/dao/static/js/runtime-main.3a867b1d.js.map",
     "static/js/6.1fe04354.chunk.js": "/dao/static/js/6.1fe04354.chunk.js",
@@ -45,13 +45,12 @@
     "static/js/2.413bd304.chunk.js.LICENSE.txt": "/dao/static/js/2.413bd304.chunk.js.LICENSE.txt",
     "static/js/3.a2965ca2.chunk.js.LICENSE.txt": "/dao/static/js/3.a2965ca2.chunk.js.LICENSE.txt",
     "static/js/6.1fe04354.chunk.js.LICENSE.txt": "/dao/static/js/6.1fe04354.chunk.js.LICENSE.txt",
-    "static/js/7.11fa1e44.chunk.js.LICENSE.txt": "/dao/static/js/7.11fa1e44.chunk.js.LICENSE.txt",
-    "static/media/Moralis.a15591f7.png": "/dao/static/media/Moralis.a15591f7.png"
+    "static/js/7.11fa1e44.chunk.js.LICENSE.txt": "/dao/static/js/7.11fa1e44.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3a867b1d.js",
     "static/js/6.1fe04354.chunk.js",
     "static/css/main.e91c6d40.chunk.css",
-    "static/js/main.11602253.chunk.js"
+    "static/js/main.6af40e1c.chunk.js"
   ]
 }
