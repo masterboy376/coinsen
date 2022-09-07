@@ -52,10 +52,12 @@ const Home = () => {
       onSuccess: () => {
         console.log("Proposal Succesful");
         setSub(false);
+        getProposals()
       },
       onError: (error) => {
         alert(error.data.message);
         setSub(false);
+        getProposals()
       },
     });
 
@@ -79,67 +81,64 @@ const Home = () => {
     }
   }
 
+  async function getProposals() {
+    const Proposals = Moralis.Object.extend("Proposals");
+    const query = new Moralis.Query(Proposals);
+    query.descending("uid_decimal");
+    const results = await query.find();
+    const table = await Promise.all(
+      results.map(async (e) => [
+        e.attributes.uid,
+        e.attributes.description,
+        <Link to="/proposal" state={{
+          description: e.attributes.description,
+          color: (await getStatus(e.attributes.uid)).color,
+          text: (await getStatus(e.attributes.uid)).text,
+          id: e.attributes.uid,
+          proposer: e.attributes.proposer
+          
+          }}>
+          <Tag
+            color={(await getStatus(e.attributes.uid)).color}
+            text={(await getStatus(e.attributes.uid)).text}
+          />
+        </Link>,
+      ])
+    );
+    setProposals(table);
+    setTotalP(results.length);
+  }
+
+  async function getPassRate() {
+    const ProposalCounts = Moralis.Object.extend("ProposalCounts");
+    const query = new Moralis.Query(ProposalCounts);
+    const results = await query.find();
+    let votesUp = 0;
+
+    results.forEach((e) => {
+      if (e.attributes.passed) {
+        votesUp++;
+      }
+    });
+
+    setCounted(results.length);
+    setPassRate((votesUp / results.length) * 100);
+  }
+
+  const fetchTokenIdOwners = async () => {
+    const options = {
+      address: "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
+      token_id:
+      "61256219218630090908623884353415804251487165430180099622403610135334702022671",
+      chain: "mumbai",
+    };
+    const tokenIdOwners = await Web3Api.token.getTokenIdOwners(options);
+    const addresses = tokenIdOwners.result.map((e) => e.owner_of);
+    setVoters(addresses);
+  };
+
   useEffect(() => {
     if (isInitialized) {
-
-      async function getProposals() {
-        const Proposals = Moralis.Object.extend("Proposals");
-        const query = new Moralis.Query(Proposals);
-        query.descending("uid_decimal");
-        const results = await query.find();
-        const table = await Promise.all(
-          results.map(async (e) => [
-            e.attributes.uid,
-            e.attributes.description,
-            <Link to="/proposal" state={{
-              description: e.attributes.description,
-              color: (await getStatus(e.attributes.uid)).color,
-              text: (await getStatus(e.attributes.uid)).text,
-              id: e.attributes.uid,
-              proposer: e.attributes.proposer
-              
-              }}>
-              <Tag
-                color={(await getStatus(e.attributes.uid)).color}
-                text={(await getStatus(e.attributes.uid)).text}
-              />
-            </Link>,
-          ])
-        );
-        setProposals(table);
-        setTotalP(results.length);
-      }
-
-
-      async function getPassRate() {
-        const ProposalCounts = Moralis.Object.extend("ProposalCounts");
-        const query = new Moralis.Query(ProposalCounts);
-        const results = await query.find();
-        let votesUp = 0;
-
-        results.forEach((e) => {
-          if (e.attributes.passed) {
-            votesUp++;
-          }
-        });
-
-        setCounted(results.length);
-        setPassRate((votesUp / results.length) * 100);
-      }
-
-
-      const fetchTokenIdOwners = async () => {
-        const options = {
-          address: "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
-          token_id:
-          "61256219218630090908623884353415804251487165430180099622403610134235190394881",
-          chain: "mumbai",
-        };
-        const tokenIdOwners = await Web3Api.token.getTokenIdOwners(options);
-        const addresses = tokenIdOwners.result.map((e) => e.owner_of);
-        setVoters(addresses);
-      };
-
 
       fetchTokenIdOwners();
       getProposals();
@@ -186,7 +185,7 @@ const Home = () => {
                     <span style={{textAlign: "center", paddingTop: "14px", margin:"auto"}}>Description</span>,
                     <span style={{textAlign: "center", paddingTop: "14px", margin:"auto"}}>Status</span>,
                   ]}
-                  pageSize={5}
+                  pageSize={3}
                 />
               </div>
 

@@ -170,7 +170,7 @@ const Proposal = () => {
             isDisabled={proposalDetails.text !== "Ongoing"}
             style={{
               backgroundColor: "black",
-              minWidth: "100%",
+              width: "auto",
               height: "250px",
               border: "1px solid rgba(6, 158, 252, 0.2)",
             }}
