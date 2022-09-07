@@ -1,2 +1,2 @@
 # DAO
-a community of nft holders.
+a community of nft holders...
